@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undergraduate Microbiology Exam: Microbial Nutrition &amp; Growth</title>
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --primary-dark: #1e40af;
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --border: #d1d5db;
+      --success-bg: #ecfdf5;
+      --success-border: #10b981;
+      --warn-bg: #fffbeb;
+      --warn-border: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 1.5rem 1rem 4rem;
+      line-height: 1.55;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-top: 5px solid var(--primary);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: 1.55rem;
+    }
+    .instructions {
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      font-size: 0.94rem;
+      margin-top: 0.75rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .student-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 640px) {
+      .student-grid { grid-template-columns: 1fr; }
+    }
+    label.field-label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+    input[type="text"] {
+      width: 100%;
+      margin-top: 0.35rem;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.96rem;
+    }
+    .progress-bar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #1f2937;
+      color: #f9fafb;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.92rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+    .q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.55rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .badge {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .q-text {
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+    .opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.55rem 0.75rem;
+      margin: 0.4rem 0;
+      border: 1px solid #e5e7eb;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: background 0.12s ease, border-color 0.12s ease;
+    }
+    .opt:hover {
+      background: #f9fafb;
+      border-color: #93c5fd;
+    }
+    .opt input[type="radio"] {
+      margin-top: 0.25rem;
+      transform: scale(1.1);
+    }
+    .opt.correct-highlight {
+      background: #ecfdf5;
+      border-color: #10b981;
+    }
+    .opt.wrong-highlight {
+      background: #fef2f2;
+      border-color: #ef4444;
+    }
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 1.25rem;
+    }
+    button {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover:not(:disabled) {
+      background: var(--primary-dark);
+    }
+    button:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+    .copy-btn {
+      background: #059669;
+      padding: 0.55rem 1rem;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    .copy-btn:hover { background: #047857; }
+    .receipt {
+      background: var(--success-bg);
+      border: 2px solid var(--success-border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .receipt code {
+      display: inline-block;
+      background: #ffffff;
+      border: 1px solid #a7f3d0;
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Undergraduate Microbiology Exam: Microbial Nutrition &amp; Growth</h1>
+      <p style="margin:0;color:var(--muted);">50 Multiple-Choice Questions &bull; Mixed Direct &amp; Scenario-Based Items</p>
+      <div class="instructions">
+        <strong>Important Rules:</strong> You are permitted <strong>only one attempt</strong>. Once you submit the exam, your answers and score will be locked on this browser. Copy your <strong>Submission Receipt Code</strong> and paste it into your Google Classroom assignment before clicking <em>Turn In</em>.
+      </div>
+    </header>
+
+    <div class="card">
+      <div class="student-grid">
+        <div>
+          <label class="field-label" for="studentName">Student Full Name *
+            <input type="text" id="studentName" placeholder="e.g., Abebe Kebede" required />
+          </label>
+        </div>
+        <div>
+          <label class="field-label" for="studentId">Student University ID *
+            <input type="text" id="studentId" placeholder="e.g., BIO/1042/16" required />
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <span id="progressText">Answered: 0 / 50</span>
+      <span id="lockStatus">Status: Active Attempt</span>
+    </div>
+
+    <form id="quizForm"></form>
+
+    <div class="actions">
+      <button id="submitBtn" type="button" onclick="submitExam()">Submit Exam (Single Attempt)</button>
+    </div>
+
+    <div id="resultBox"></div>
+  </div>
+
+  <script>
+    const LOCK_KEY = "microbiology_nutrition_growth_exam_50q_v2";
+
+    const QUESTIONS = [
+      // Section A: Nutritional Requirements & Macronutrients / Micronutrients (Q1-Q10)
+      {
+        id: 1,
+        section: "Nutritional Requirements",
+        bloom: "Apply",
+        q: "A marine bacterium uses sunlight as its energy source and CO2 as its sole carbon source, obtaining electrons from H2S. Which nutritional classification best describes this organism?",
+        opts: [
+          "Photolithoautotroph",
+          "Chemolithoautotroph",
+          "Photoheterotroph",
+          "Chemoorganoheterotroph"
+        ],
+        ans: "Photolithoautotroph"
+      },
+      {
+        id: 2,
+        section: "Nutritional Requirements",
+        bloom: "Analyze",
+        q: "Scenario: A microbiologist isolates a soil bacterium that grows vigorously in a minimal salts medium containing glucose, ammonium sulfate, phosphate, and magnesium ONLY after nicotinic acid is added. Nicotinic acid is functioning as a:",
+        opts: [
+          "Major electron donor",
+          "Trace element",
+          "Growth factor (vitamin)",
+          "Compatible solute"
+        ],
+        ans: "Growth factor (vitamin)"
+      },
+      {
+        id: 3,
+        section: "Nutritional Requirements",
+        bloom: "Remember",
+        q: "Which element is a structural component of cysteine and methionine residues in proteins, as well as biotin and thiamine?",
+        opts: [
+          "Phosphorus",
+          "Potassium",
+          "Calcium",
+          "Sulfur"
+        ],
+        ans: "Sulfur"
+      },
+      {
+        id: 4,
+        section: "Nutritional Requirements",
+        bloom: "Understand",
+        q: "Chemoorganotrophs differ from chemolithotrophs primarily in their:",
+        opts: [
+          "Ability to fix atmospheric nitrogen",
+          "Source of energy-yielding electrons (organic vs. inorganic compounds)",
+          "Requirement for high water activity",
+          "Mode of cellular division"
+        ],
+        ans: "Source of energy-yielding electrons (organic vs. inorganic compounds)"
+      },
+      {
+        id: 5,
+        section: "Nutritional Requirements",
+        bloom: "Remember",
+        q: "Which of the following pairs correctly matches a macronutrient with a primary cellular role?",
+        opts: [
+          "Iron — stabilizer of ribosomes and tRNA",
+          "Zinc — primary structural element of peptidoglycan cross-links",
+          "Phosphorus — core component of nucleic acids, ATP, and phospholipids",
+          "Magnesium — central atom of bacteriochlorophyll"
+        ],
+        ans: "Phosphorus — core component of nucleic acids, ATP, and phospholipids"
+      },
+      {
+        id: 6,
+        section: "Nutritional Requirements",
+        bloom: "Apply",
+        q: "Scenario: An organism can grow in a medium where NaHCO3 is the only carbon source and molecular hydrogen (H2) is oxidized to reduce O2. This bacterium is classified as a:",
+        opts: [
+          "Photoorganoheterotroph",
+          "Chemolithoautotroph",
+          "Chemoorganoheterotroph",
+          "Facultative methylotroph"
+        ],
+        ans: "Chemolithoautotroph"
+      },
+      {
+        id: 7,
+        section: "Nutritional Requirements",
+        bloom: "Understand",
+        q: "Which statement accurately distinguishes micronutrients (trace elements) from macronutrients?",
+        opts: [
+          "Micronutrients are organic molecules; macronutrients are always inorganic ions",
+          "Micronutrients are only needed by obligate anaerobes",
+          "Macronutrients cannot be assimilated from inorganic salts",
+          "Micronutrients are required in very small quantities (often as enzyme cofactors), whereas macronutrients are needed in larger amounts for major cell polymers"
+        ],
+        ans: "Micronutrients are required in very small quantities (often as enzyme cofactors), whereas macronutrients are needed in larger amounts for major cell polymers"
+      },
+      {
+        id: 8,
+        section: "Nutritional Requirements",
+        bloom: "Understand",
+        q: "An auxotrophic mutant strain of Escherichia coli cannot synthesize uracil and cytosine unless supplied externally. These supplements act as which class of growth factors?",
+        opts: [
+          "Amino acids",
+          "Vitamins",
+          "Nucleotides (pyrimidines)",
+          "Fatty acids"
+        ],
+        ans: "Nucleotides (pyrimidines)"
+      },
+      {
+        id: 9,
+        section: "Nutritional Requirements",
+        bloom: "Remember",
+        q: "Which nitrogen source is directly assimilated into organic cellular building blocks (such as glutamate and glutamine) without requiring prior enzymatic reduction?",
+        opts: [
+          "Nitrate (NO3-)",
+          "Nitrite (NO2-)",
+          "Ammonia / ammonium (NH4+)",
+          "Dinitrogen gas (N2) in non-diazotrophs"
+        ],
+        ans: "Ammonia / ammonium (NH4+)"
+      },
+      {
+        id: 10,
+        section: "Nutritional Requirements",
+        bloom: "Analyze",
+        q: "Why is oxygen (O) and hydrogen (H) availability critical to microbial nutrition beyond their roles in H2O?",
+        opts: [
+          "They serve exclusively as terminal electron acceptors in fermentation",
+          "They replace the need for carbon sources in heterotrophs",
+          "They are constituent atoms of nearly all organic macromolecules and participate in redox and proton-motive bioenergetics",
+          "They prevent cell lysis in hypotonic environments"
+        ],
+        ans: "They are constituent atoms of nearly all organic macromolecules and participate in redox and proton-motive bioenergetics"
+      },
+
+      // Section B: Environmental Factors (Q11-Q20)
+      {
+        id: 11,
+        section: "Environmental Factors",
+        bloom: "Analyze",
+        q: "Scenario: A food microbiologist tests jam with a high sucrose concentration resulting in a water activity (aw) of 0.82. Most non-halophilic bacteria fail to grow here primarily because:",
+        opts: [
+          "High aw denatures DNA polymerase immediately",
+          "Low aw draws water out of the cell (osmotic stress), reducing turgor and nutrient transport",
+          "Sucrose acts as a direct uncoupler of oxidative phosphorylation",
+          "Low aw raises intracellular pH above 9.5"
+        ],
+        ans: "Low aw draws water out of the cell (osmotic stress), reducing turgor and nutrient transport"
+      },
+      {
+        id: 12,
+        section: "Environmental Factors",
+        bloom: "Apply",
+        q: "Which organism would you expect to grow only in the lower, oxygen-free zone of a thioglycollate broth tube while showing visible turbidity near the bottom and a clear upper oxygenated zone?",
+        opts: [
+          "Obligate aerobe",
+          "Aerotolerant anaerobe",
+          "Obligate anaerobe",
+          "Microaerophile"
+        ],
+        ans: "Obligate anaerobe"
+      },
+      {
+        id: 13,
+        section: "Environmental Factors",
+        bloom: "Apply",
+        q: "An organism grows optimally at 68 °C, with a minimum of 50 °C and a maximum of 78 °C. How should it be classified?",
+        opts: [
+          "Psychrophile",
+          "Mesophile",
+          "Hyperthermophile",
+          "Thermophile"
+        ],
+        ans: "Thermophile"
+      },
+      {
+        id: 14,
+        section: "Environmental Factors",
+        bloom: "Analyze",
+        q: "Scenario: An acidophile maintains an internal cytoplasmic pH near 6.5 while growing in an acidic mine drainage pool at pH 2.0. How does this cell prevent acidifying its cytoplasm?",
+        opts: [
+          "By actively pumping protons (H+) outward and using acid-stable macromolecules and membrane barriers",
+          "By importing excess H+ ions via passive diffusion",
+          "By replacing its plasma membrane with a cellulose cell wall",
+          "By halting all ATP synthesis at external pH values below 5.0"
+        ],
+        ans: "By actively pumping protons (H+) outward and using acid-stable macromolecules and membrane barriers"
+      },
+      {
+        id: 15,
+        section: "Environmental Factors",
+        bloom: "Remember",
+        q: "Which enzyme pair is characteristically abundant in obligate aerobes and aerotolerant anaerobes to neutralize toxic reactive oxygen species (ROS)?",
+        opts: [
+          "Nitrogenase and hydrogenase",
+          "RuBisCO and carbonic anhydrase",
+          "Superoxide dismutase (SOD) and catalase (or peroxidase)",
+          "Reverse gyrase and methanol dehydrogenase"
+        ],
+        ans: "Superoxide dismutase (SOD) and catalase (or peroxidase)"
+      },
+      {
+        id: 16,
+        section: "Environmental Factors",
+        bloom: "Understand",
+        q: "Halotolerant microbes differ from extreme halophiles in that halotolerant organisms:",
+        opts: [
+          "Require NaCl concentrations of 15–30% for structural integrity",
+          "Only live inside hypersaline lakes and cannot grow in freshwater or standard media",
+          "Can tolerate moderate-to-high salt concentrations, though they grow optimally at lower salt levels",
+          "Lack cell walls completely"
+        ],
+        ans: "Can tolerate moderate-to-high salt concentrations, though they grow optimally at lower salt levels"
+      },
+      {
+        id: 17,
+        section: "Environmental Factors",
+        bloom: "Understand",
+        q: "In terms of redox potential (Eh), an environment with a high positive redox potential generally favors:",
+        opts: [
+          "Strict anaerobes requiring strongly reducing conditions",
+          "Methanogenesis exclusively",
+          "Complete cessation of electron transport",
+          "Aerobic respiration and organisms adapted to oxidizing conditions"
+        ],
+        ans: "Aerobic respiration and organisms adapted to oxidizing conditions"
+      },
+      {
+        id: 18,
+        section: "Environmental Factors",
+        bloom: "Analyze",
+        q: "Scenario: A culture tube of Campylobacter jejuni is incubated in a candle jar where oxygen is partially depleted to about 5–10%. Why does it grow better here than in normal atmospheric air (~21% O2)?",
+        opts: [
+          "It is a microaerophile whose oxygen-sensitive enzymes or respiratory chain are damaged by atmospheric O2 levels",
+          "It requires carbon monoxide to fix carbon",
+          "It is an obligate fermenter killed by any trace of O2",
+          "Candle wax provides essential sterols"
+        ],
+        ans: "It is a microaerophile whose oxygen-sensitive enzymes or respiratory chain are damaged by atmospheric O2 levels"
+      },
+      {
+        id: 19,
+        section: "Environmental Factors",
+        bloom: "Understand",
+        q: "Which adaptation is most typical of psychrophiles compared to mesophiles?",
+        opts: [
+          "Higher proportion of saturated long-chain fatty acids in membrane lipids",
+          "Thick peptidoglycan layers lacking teichoic acids",
+          "Higher proportion of unsaturated and short-chain fatty acids to keep membranes fluid at low temperatures",
+          "Absence of ribosomes"
+        ],
+        ans: "Higher proportion of unsaturated and short-chain fatty acids to keep membranes fluid at low temperatures"
+      },
+      {
+        id: 20,
+        section: "Environmental Factors",
+        bloom: "Remember",
+        q: "Neutrophiles typically exhibit optimal growth within which external pH range?",
+        opts: [
+          "pH 1.0–3.5",
+          "pH 9.0–11.5",
+          "pH 12.0–14.0",
+          "pH 5.5–8.0"
+        ],
+        ans: "pH 5.5–8.0"
+      },
+
+      // Section C: Cell Growth Processes & Binary Fission (Q21-Q30)
+      {
+        id: 21,
+        section: "Cell Growth & Division",
+        bloom: "Understand",
+        q: "Which sequence accurately reflects the flow of cellular growth from raw inputs to macromolecular structures?",
+        opts: [
+          "Polymerization → Nutrient acquisition → Fueling reactions → Biosynthesis → Assembly",
+          "Nutrient acquisition → Fueling reactions → Biosynthesis → Polymerization → Assembly",
+          "Biosynthesis → Assembly → Nutrient acquisition → Polymerization → Fueling reactions",
+          "Assembly → Polymerization → Fueling reactions → Nutrient acquisition → Biosynthesis"
+        ],
+        ans: "Nutrient acquisition → Fueling reactions → Biosynthesis → Polymerization → Assembly"
+      },
+      {
+        id: 22,
+        section: "Cell Growth & Division",
+        bloom: "Remember",
+        q: "Joining amino acids into polypeptides or nucleotides into nucleic acids via covalent bonds is known as:",
+        opts: [
+          "Fueling",
+          "Self-assembly",
+          "Polymerization",
+          "Catabolite repression"
+        ],
+        ans: "Polymerization"
+      },
+      {
+        id: 23,
+        section: "Cell Growth & Division",
+        bloom: "Analyze",
+        q: "Scenario: During rapid growth in rich medium, E. coli has a generation time of 20 minutes, even though a single round of chromosome replication and segregation takes roughly 40–60 minutes. How does the cell achieve this?",
+        opts: [
+          "By skipping chromosome replication in alternate divisions",
+          "By dividing via budding rather than binary fission",
+          "By initiating new rounds of DNA replication before previous rounds finish (multiforked replication)",
+          "By storing a single copy of DNA only in the mother cell"
+        ],
+        ans: "By initiating new rounds of DNA replication before previous rounds finish (multiforked replication)"
+      },
+      {
+        id: 24,
+        section: "Cell Growth & Division",
+        bloom: "Understand",
+        q: "Formation of the tobacco mosaic virus capsid or phospholipid bilayer organization from subunits based on their intrinsic chemical properties is an example of:",
+        opts: [
+          "Guided assembly",
+          "Spontaneous self-assembly",
+          "Multiforked replication",
+          "Endospore germination"
+        ],
+        ans: "Spontaneous self-assembly"
+      },
+      {
+        id: 25,
+        section: "Cell Growth & Division",
+        bloom: "Understand",
+        q: "When a complex structure such as a bacterial flagellum or phage head requires scaffolding proteins, chaperones, or preexisting templates to organize subunits correctly, this process is termed:",
+        opts: [
+          "Spontaneous self-assembly",
+          "Binary fission",
+          "Guided assembly",
+          "Chemiosmosis"
+        ],
+        ans: "Guided assembly"
+      },
+      {
+        id: 26,
+        section: "Cell Growth & Division",
+        bloom: "Remember",
+        q: "During typical binary fission in rod-shaped bacteria, septum formation and cytokinesis depend critically on polymerization of which cytoskeletal protein ring at mid-cell?",
+        opts: [
+          "Actin",
+          "Tubulin",
+          "Myosin",
+          "FtsZ"
+        ],
+        ans: "FtsZ"
+      },
+      {
+        id: 27,
+        section: "Cell Growth & Division",
+        bloom: "Understand",
+        q: "Which statement best distinguishes cell growth from population growth in bacteria?",
+        opts: [
+          "Cell growth is the increase in cell mass and components up to division; population growth is the increase in cell number over time",
+          "Cell growth occurs only during stationary phase; population growth occurs only during lag phase",
+          "Cell growth requires binary fission; population growth requires conjugation",
+          "They are identical terms with no functional distinction"
+        ],
+        ans: "Cell growth is the increase in cell mass and components up to division; population growth is the increase in cell number over time"
+      },
+      {
+        id: 28,
+        section: "Cell Growth & Division",
+        bloom: "Understand",
+        q: "'Fueling reactions' in a growing microbial cell primarily supply:",
+        opts: [
+          "Cell wall teichoic acids directly without ATP",
+          "Precursor metabolites, reducing power (NAD(P)H), and energy (ATP / proton-motive force) for biosynthesis",
+          "Flagellar rotation without electron donors",
+          "Capsular polysaccharides exclusively"
+        ],
+        ans: "Precursor metabolites, reducing power (NAD(P)H), and energy (ATP / proton-motive force) for biosynthesis"
+      },
+      {
+        id: 29,
+        section: "Cell Growth & Division",
+        bloom: "Analyze",
+        q: "In multiforked DNA replication in rapidly dividing bacteria, a daughter cell immediately after division often inherits chromosomes that:",
+        opts: [
+          "Are already undergoing additional rounds of replication initiated at oriC",
+          "Lack origins of replication (oriC)",
+          "Are linear rather than circular",
+          "Contain no methylated adenine bases"
+        ],
+        ans: "Are already undergoing additional rounds of replication initiated at oriC"
+      },
+      {
+        id: 30,
+        section: "Cell Growth & Division",
+        bloom: "Analyze",
+        q: "Scenario: A researcher adds a chemical that blocks FtsZ ring constriction while allowing DNA replication and cytoplasmic enlargement to continue. What immediate phenotype is observed?",
+        opts: [
+          "Rapid production of miniature cells",
+          "Immediate lysis from excessive cross-wall synthesis",
+          "Elongated filamentous cells that fail to septate into separate daughter cells",
+          "Conversion into metabolically dormant endospores"
+        ],
+        ans: "Elongated filamentous cells that fail to septate into separate daughter cells"
+      },
+
+      // Section D: Batch Culture, Steady State & Growth Curve Phases (Q31-Q40)
+      {
+        id: 31,
+        section: "Batch & Continuous Growth",
+        bloom: "Remember",
+        q: "A batch culture is best defined as:",
+        opts: [
+          "A closed system where a fixed amount of medium is inoculated and no fresh nutrients are added or waste removed during the run",
+          "An open system where fresh medium is continuously added and culture is removed at an equal rate",
+          "A solid agar plate incubated under anaerobic conditions",
+          "A culture maintained perpetually at zero net growth"
+        ],
+        ans: "A closed system where a fixed amount of medium is inoculated and no fresh nutrients are added or waste removed during the run"
+      },
+      {
+        id: 32,
+        section: "Batch & Continuous Growth",
+        bloom: "Understand",
+        q: "In a chemostat operating at steady state, which condition holds true?",
+        opts: [
+          "Cell density and nutrient concentrations fluctuate wildly every hour",
+          "Culture volume, cell concentration, and growth rate remain relatively constant over time as fresh medium enters and effluent exits",
+          "All bacteria are in the death phase",
+          "Dilution rate must exceed maximum specific growth rate at all times"
+        ],
+        ans: "Culture volume, cell concentration, and growth rate remain relatively constant over time as fresh medium enters and effluent exits"
+      },
+      {
+        id: 33,
+        section: "Batch & Continuous Growth",
+        bloom: "Analyze",
+        q: "Scenario: You transfer Pseudomonas aeruginosa from a glucose-rich medium into a minimal medium containing citrate as the sole carbon source. The population shows little increase in cell number for 2 hours before dividing rapidly. This initial period is the lag phase because cells are:",
+        opts: [
+          "Undergoing rapid lysis due to citrate toxicity",
+          "Sporulating to survive nutrient excess",
+          "Synthesizing new enzymes, transporters, and cellular machinery needed to metabolize the new substrate",
+          "Entering irreversible senescence"
+        ],
+        ans: "Synthesizing new enzymes, transporters, and cellular machinery needed to metabolize the new substrate"
+      },
+      {
+        id: 34,
+        section: "Batch & Continuous Growth",
+        bloom: "Understand",
+        q: "During which phase of the batch growth curve do bacteria divide at a constant, maximal rate under the given conditions, resulting in a straight line when log10 N is plotted against time?",
+        opts: [
+          "Lag phase",
+          "Exponential (log) phase",
+          "Stationary phase",
+          "Death phase"
+        ],
+        ans: "Exponential (log) phase"
+      },
+      {
+        id: 35,
+        section: "Batch & Continuous Growth",
+        bloom: "Understand",
+        q: "What typically causes a batch culture to enter the stationary phase?",
+        opts: [
+          "Infinite availability of electron acceptors",
+          "Depletion of an essential nutrient, accumulation of toxic metabolic waste products, or unfavorable pH/oxygen shifts",
+          "Doubling of the incubator volume automatically",
+          "Complete absence of cell division machinery"
+        ],
+        ans: "Depletion of an essential nutrient, accumulation of toxic metabolic waste products, or unfavorable pH/oxygen shifts"
+      },
+      {
+        id: 36,
+        section: "Batch & Continuous Growth",
+        bloom: "Understand",
+        q: "In stationary phase, why does the viable cell count remain roughly constant?",
+        opts: [
+          "All cells stop metabolizing completely",
+          "Cells fuse together into multinucleated filaments",
+          "The rate of new cell division is roughly balanced by the rate of cell death (or cryptic growth/maintenance turnover occurs)",
+          "Viable cells convert into agar colonies inside the broth"
+        ],
+        ans: "The rate of new cell division is roughly balanced by the rate of cell death (or cryptic growth/maintenance turnover occurs)"
+      },
+      {
+        id: 37,
+        section: "Batch & Continuous Growth",
+        bloom: "Remember",
+        q: "During the death phase (decline phase) of a batch culture, the decrease in viable cells typically follows:",
+        opts: [
+          "A linear increase in optical density",
+          "An exponential (logarithmic) decline in viable count over time",
+          "An immediate drop to zero cells in one minute",
+          "A doubling of generation time every 5 minutes"
+        ],
+        ans: "An exponential (logarithmic) decline in viable count over time"
+      },
+      {
+        id: 38,
+        section: "Batch & Continuous Growth",
+        bloom: "Analyze",
+        q: "Scenario: In a chemostat, you set the dilution rate (D) higher than the organism's maximum specific growth rate (μmax). What happens to the microbial population?",
+        opts: [
+          "Cells are washed out of the chemostat faster than they can divide (washout)",
+          "The population grows exponentially and clogs the vessel",
+          "The culture enters a prolonged lag phase without cell loss",
+          "Cells form a permanent biofilm that stops dilution"
+        ],
+        ans: "Cells are washed out of the chemostat faster than they can divide (washout)"
+      },
+      {
+        id: 39,
+        section: "Batch & Continuous Growth",
+        bloom: "Evaluate",
+        q: "Why is the exponential (log) phase generally preferred for studying microbial physiology, antimicrobial susceptibility, or enzyme activity?",
+        opts: [
+          "Cells are most uniform in physiological state and dividing at a predictable, constant rate",
+          "Toxic waste products are at their highest concentration",
+          "Cell lysis is occurring at maximum velocity",
+          "Nutrients are completely exhausted"
+        ],
+        ans: "Cells are most uniform in physiological state and dividing at a predictable, constant rate"
+      },
+      {
+        id: 40,
+        section: "Batch & Continuous Growth",
+        bloom: "Remember",
+        q: "Which transition occurs between exponential growth and stationary phase when growth slows progressively before leveling off?",
+        opts: [
+          "Deceleration (decline) phase",
+          "Lag-to-death transition",
+          "Lag-to-log acceleration",
+          "Washout phase"
+        ],
+        ans: "Deceleration (decline) phase"
+      },
+
+      // Section E: Growth Mathematics (Q41-Q45)
+      {
+        id: 41,
+        section: "Growth Mathematics",
+        bloom: "Apply",
+        q: "Starting with N0 = 500 bacterial cells, how many cells (N) are present after n = 6 generations assuming 100% survival and no lag?",
+        opts: [
+          "3,000",
+          "12,000",
+          "32,000",
+          "64,000"
+        ],
+        ans: "32,000"
+      },
+      {
+        id: 42,
+        section: "Growth Mathematics",
+        bloom: "Apply",
+        q: "Scenario: A bacterial culture increases from 1.0 × 10^4 cells/mL to 8.0 × 10^4 cells/mL in 90 minutes during exponential growth. What is the generation time (g)?",
+        opts: [
+          "15 minutes",
+          "30 minutes",
+          "45 minutes",
+          "90 minutes"
+        ],
+        ans: "30 minutes"
+      },
+      {
+        id: 43,
+        section: "Growth Mathematics",
+        bloom: "Understand",
+        q: "Given the growth equation N = N0 × 2^n, which expression correctly solves for the number of generations (n)?",
+        opts: [
+          "n = log10(N / N0)",
+          "n = 2 × (N - N0)",
+          "n = [log10(N) - log10(N0)] / log10(2)",
+          "n = N0 / [N × log2(10)]"
+        ],
+        ans: "n = [log10(N) - log10(N0)] / log10(2)"
+      },
+      {
+        id: 44,
+        section: "Growth Mathematics",
+        bloom: "Apply",
+        q: "Scenario: A bacterium has a generation time g = 24 minutes. What is its growth rate constant (R, in generations per hour)?",
+        opts: [
+          "0.4 gen/h",
+          "2.5 gen/h",
+          "24.0 gen/h",
+          "144.0 gen/h"
+        ],
+        ans: "2.5 gen/h"
+      },
+      {
+        id: 45,
+        section: "Growth Mathematics",
+        bloom: "Analyze",
+        q: "If Culture A has a generation time of 20 minutes and Culture B has a generation time of 60 minutes, how do their growth rates (R, generations per unit time) compare?",
+        opts: [
+          "Culture A's growth rate is 3 times faster than Culture B's",
+          "Culture B's growth rate is 3 times faster than Culture A's",
+          "Both cultures have the exact same growth rate",
+          "Culture A's growth rate is 60 times faster than Culture B's"
+        ],
+        ans: "Culture A's growth rate is 3 times faster than Culture B's"
+      },
+
+      // Section F: Measurement of Microbial Growth (Q46-Q50)
+      {
+        id: 46,
+        section: "Growth Measurement",
+        bloom: "Evaluate",
+        q: "Scenario: A technician uses a Petroff-Hausser counting chamber under a phase-contrast microscope to enumerate a bacterial suspension. Which limitation is inherent to this method?",
+        opts: [
+          "It requires 48 hours of agar incubation before counting",
+          "It cannot reliably distinguish live (viable) cells from dead cells, and very small or motile cells can be tricky to count accurately",
+          "It measures only total protein nitrogen rather than individual cells",
+          "It works only for filamentous molds"
+        ],
+        ans: "It cannot reliably distinguish live (viable) cells from dead cells, and very small or motile cells can be tricky to count accurately"
+      },
+      {
+        id: 47,
+        section: "Growth Measurement",
+        bloom: "Analyze",
+        q: "In the standard plate count (viable count) method, why are plates with between 25 and 250 colony-forming units (CFU) selected for standard calculations (per revised FDA BAM guidelines)?",
+        opts: [
+          "Below 25 colonies, statistical sampling error and dilution-factor exaggeration are high; above 250 colonies, crowding/overlapping colonies can cause underestimation or inhibitory interactions",
+          "Above 250 colonies, agar melts due to metabolic heat",
+          "Below 25 colonies, colonies automatically merge into a single film",
+          "It is an arbitrary rule with no statistical or practical basis"
+        ],
+        ans: "Below 25 colonies, statistical sampling error and dilution-factor exaggeration are high; above 250 colonies, crowding/overlapping colonies can cause underestimation or inhibitory interactions"
+      },
+      {
+        id: 48,
+        section: "Growth Measurement",
+        bloom: "Analyze",
+        q: "Scenario: Raw milk samples are tested using the Methylene Blue Reduction Test (MBRT) to assess bacterial load and hygienic quality. Faster decolorization of methylene blue from blue to colorless indicates:",
+        opts: [
+          "Lower bacterial metabolic activity and higher milk freshness",
+          "Complete absence of microorganisms",
+          "Higher bacterial metabolic activity (depletion of dissolved O2 and electron transfer reducing methylene blue to its leuco form), indicating higher microbial load",
+          "Precipitation of milk casein by salt"
+        ],
+        ans: "Higher bacterial metabolic activity (depletion of dissolved O2 and electron transfer reducing methylene blue to its leuco form), indicating higher microbial load"
+      },
+      {
+        id: 49,
+        section: "Growth Measurement",
+        bloom: "Understand",
+        q: "Which pair of methods represents indirect measurements of microbial growth rather than direct cell or colony counts?",
+        opts: [
+          "Petroff-Hausser chamber count and spread-plate CFU count",
+          "Pour-plate count and direct epifluorescence microscopy",
+          "Membrane filtration colony count and Petroff-Hausser count",
+          "Turbidimetry (spectrophotometer absorbance/OD) and dry cell mass / nitrogen content"
+        ],
+        ans: "Turbidimetry (spectrophotometer absorbance/OD) and dry cell mass / nitrogen content"
+      },
+      {
+        id: 50,
+        section: "Growth Measurement",
+        bloom: "Evaluate",
+        q: "Why does turbidimetry (measuring optical density, e.g., at 600 nm) lose linearity at very high cell concentrations?",
+        opts: [
+          "Multiple scattering occurs as light hits dense cells, and dead cells or cell debris also scatter light",
+          "Spectrophotometers turn off automatically above OD600 = 0.5",
+          "Bacteria absorb all visible light equally regardless of concentration",
+          "Turbidity measures only viable spores"
+        ],
+        ans: "Multiple scattering occurs as light hits dense cells, and dead cells or cell debris also scatter light"
+      }
+    ];
+
+    function shuffleArray(arr) {
+      const copy = arr.slice();
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function updateProgress() {
+      const answered = document.querySelectorAll('input[type="radio"]:checked').length;
+      document.getElementById("progressText").textContent = `Answered: ${answered} / ${QUESTIONS.length}`;
+    }
+
+    function renderExam(lockedRecord = null) {
+      const form = document.getElementById("quizForm");
+      form.innerHTML = "";
+      const letters = ["A", "B", "C", "D"];
+
+      QUESTIONS.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const header = document.createElement("div");
+        header.className = "q-header";
+        header.innerHTML = `
+          <span><strong>Question ${index + 1} of ${QUESTIONS.length}</strong> &bull; ${item.section}</span>
+          <span class="badge">Bloom: ${item.bloom}</span>
+        `;
+
+        const qText = document.createElement("div");
+        qText.className = "q-text";
+        qText.textContent = item.q;
+
+        card.appendChild(header);
+        card.appendChild(qText);
+
+        const displayedOpts = lockedRecord && lockedRecord.optionOrder && lockedRecord.optionOrder[item.id]
+          ? lockedRecord.optionOrder[item.id]
+          : shuffleArray(item.opts);
+
+        card.dataset.optionOrder = JSON.stringify(displayedOpts);
+
+        displayedOpts.forEach((optText, optIdx) => {
+          const label = document.createElement("label");
+          label.className = "opt";
+
+          const radio = document.createElement("input");
+          radio.type = "radio";
+          radio.name = `q_${item.id}`;
+          radio.value = optText;
+          radio.addEventListener("change", updateProgress);
+
+          if (lockedRecord) {
+            radio.disabled = true;
+            const chosen = lockedRecord.answers[item.id];
+            if (chosen === optText) {
+              radio.checked = true;
+              label.classList.add(optText === item.ans ? "correct-highlight" : "wrong-highlight");
+            } else if (optText === item.ans) {
+              label.classList.add("correct-highlight");
+            }
+          }
+
+          const span = document.createElement("span");
+          span.innerHTML = `<strong>${letters[optIdx]})</strong> ${optText}`;
+
+          label.appendChild(radio);
+          label.appendChild(span);
+          card.appendChild(label);
+        });
+
+        form.appendChild(card);
+      });
+
+      updateProgress();
+    }
+
+    function generateReceiptCode(name, id, score, total, ts) {
+      const raw = `${name}|${id}|${score}/${total}|${ts}`;
+      let hash = 0;
+      for (let i = 0; i < raw.length; i++) {
+        hash = ((hash << 5) - hash) + raw.charCodeAt(i);
+        hash |= 0;
+      }
+      const checksum = Math.abs(hash).toString(36).toUpperCase().padStart(6, "0");
+      return `MICRO-${id.replace(/[^A-Za-z0-9]/g, "").toUpperCase()}-${score}OF${total}-${checksum}`;
+    }
+
+    function showReceipt(rec) {
+      document.getElementById("lockStatus").textContent = "Status: Submitted & Locked";
+      document.getElementById("submitBtn").disabled = true;
+      document.getElementById("studentName").value = rec.name;
+      document.getElementById("studentId").value = rec.id;
+      document.getElementById("studentName").disabled = true;
+      document.getElementById("studentId").disabled = true;
+
+      const receiptString = `${rec.name} (${rec.id}) | Score: ${rec.score}/${rec.total} (${rec.pct}%) | Time: ${rec.ts} | Code: ${rec.receipt}`;
+
+      document.getElementById("resultBox").innerHTML = `
+        <div class="receipt">
+          <h3 style="margin-top:0;">Exam Submitted — Single Attempt Locked</h3>
+          <p><strong>Student:</strong> ${rec.name} (${rec.id})</p>
+          <p><strong>Final Score:</strong> ${rec.score} / ${rec.total} (${rec.pct}%)</p>
+          <p><strong>Submitted At:</strong> ${rec.ts}</p>
+          <p><strong>Receipt Code (Paste into Google Classroom):</strong><br />
+            <code id="receiptCodeText">${receiptString}</code>
+          </p>
+          <button type="button" class="copy-btn" onclick="copyReceipt()">Copy Receipt to Clipboard</button>
+          <span id="copyConfirm" style="margin-left:0.6rem;font-weight:600;color:#065f46;"></span>
+        </div>
+      `;
+    }
+
+    function copyReceipt() {
+      const text = document.getElementById("receiptCodeText").textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        document.getElementById("copyConfirm").textContent = "Copied!";
+      });
+    }
+
+    function submitExam() {
+      if (localStorage.getItem(LOCK_KEY)) {
+        alert("An attempt has already been submitted and locked on this browser.");
+        return;
+      }
+
+      const name = document.getElementById("studentName").value.trim();
+      const id = document.getElementById("studentId").value.trim();
+
+      if (!name || !id) {
+        alert("Please enter both your Full Name and University ID before submitting.");
+        return;
+      }
+
+      const answeredCount = document.querySelectorAll('input[type="radio"]:checked').length;
+      if (answeredCount < QUESTIONS.length) {
+        const proceed = confirm(`You have answered ${answeredCount} out of ${QUESTIONS.length} questions. Unanswered items will be scored as 0. Submit anyway?`);
+        if (!proceed) return;
+      }
+
+      let score = 0;
+      const answers = {};
+      const optionOrder = {};
+
+      document.querySelectorAll("#quizForm .card").forEach((card, idx) => {
+        const qObj = QUESTIONS[idx];
+        optionOrder[qObj.id] = JSON.parse(card.dataset.optionOrder);
+        const selected = card.querySelector(`input[name="q_${qObj.id}"]:checked`);
+        if (selected) {
+          answers[qObj.id] = selected.value;
+          if (selected.value === qObj.ans) score++;
+        } else {
+          answers[qObj.id] = null;
+        }
+      });
+
+      const pct = ((score / QUESTIONS.length) * 100).toFixed(1);
+      const ts = new Date().toISOString();
+      const receipt = generateReceiptCode(name, id, score, QUESTIONS.length, ts);
+
+      const record = { name, id, score, total: QUESTIONS.length, pct, ts, receipt, answers, optionOrder };
+      localStorage.setItem(LOCK_KEY, JSON.stringify(record));
+
+      renderExam(record);
+      showReceipt(record);
+      document.getElementById("resultBox").scrollIntoView({ behavior: "smooth" });
+    }
+
+    const saved = localStorage.getItem(LOCK_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      renderExam(parsed);
+      showReceipt(parsed);
+    } else {
+      renderExam(null);
+    }
+  </script>
+</body>
+</html>
